@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { ArrowRight, BookOpen, Clock3, Compass, Flag, GraduationCap, Landmark, MapPinned, Menu, Play, Send, ShieldCheck, Users, X, Sparkles, Activity } from 'lucide-react';
 import { people, facts, theses, survey, tasks } from './data';
 
-const url = import.meta.env.VITE_SUPABASE_URL?.trim(),
+const url = import.meta.env.VITE_SUPABASE_URL?.trim().replace(/\/(rest\/v1\/?)?$/, ''),
       key = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim(),
       db = url && key ? createClient(url, key) : null;
 
