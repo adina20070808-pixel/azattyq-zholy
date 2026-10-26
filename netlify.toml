@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # The Supabase URL and anon (publishable) key are meant to be public: Vite
+  # inlines VITE_* variables into the client bundle, so tell secrets scanning
+  # to expect them. Never put the service_role key in a VITE_* variable.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY"
