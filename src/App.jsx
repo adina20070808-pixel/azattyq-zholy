@@ -272,30 +272,57 @@ function App() {
         </div>
       </section>
 
-      <section className="section white" id="videos">
-        <SectionTitle eyebrow="05 / БЕЙНЕМАТЕРИАЛДАР" title="Тарихты бейне арқылы таны" desc="Төмендегі сілтемелер YouTube-та тақырып бойынша іздеуді ашады. Жариялау алдында тексерілген нақты үш видео таңда." />
-        <div className="videos">
-          {[
-            ['01', 'Сырым Датұлы көтерілісі', 'Көтерілістің алғышарттары мен Кіші жүздегі жағдай', 'https://www.youtube.com/results?search_query=Сырым+Датұлы+көтерілісі+тарих'],
-            ['02', 'Исатай–Махамбет қозғалысы', 'Бөкей Ордасындағы жер мәселесі мен көтерілістің барысы', 'https://www.youtube.com/results?search_query=Исатай+Тайманұлы+Махамбет+көтеріліс'],
-            ['03', 'Кенесары Қасымұлы қозғалысы', 'Қозғалыстың мақсаты, барысы және тарихи маңызы', 'https://www.youtube.com/results?search_query=Кенесары+Қасымұлы+көтерілісі+тарих']
-          ].map(v => (
-            <article className="video" key={v[0]}>
-              <a className="cover" href={v[3]} target="_blank" rel="noreferrer">
-                <span>{v[0]}</span>
-                <i><Play fill="currentColor" /></i>
-                <small>БЕЙНЕСАБАҚ ↗</small>
-              </a>
-              <div>
-                <h3>{v[1]}</h3>
-                <p>{v[2]}</p>
-                <a className="textlink" href={v[3]} target="_blank" rel="noreferrer">YouTube-та көру ↗</a>
-              </div>
-            </article>
-          ))}
+      
+<section className="section white" id="videos">
+  <SectionTitle
+    eyebrow="05 / БЕЙНЕМАТЕРИАЛДАР"
+    title="Тарихты бейне арқылы таны"
+    desc="Қазақстан тарихындағы маңызды көтерілістер мен ұлт-азаттық қозғалыстар туралы бейнематериалдар."
+  />
+
+  <div className="videos">
+    {[
+      {
+        id: '01',
+        title: 'Сырым Датұлы көтерілісі',
+        desc: 'Көтерілістің алғышарттары мен Кіші жүздегі жағдай',
+        videoId: 'lg3x1T_X7ns'
+      },
+      {
+        id: '02',
+        title: 'Исатай–Махамбет қозғалысы',
+        desc: 'Бөкей Ордасындағы жер мәселесі мен көтерілістің барысы',
+        videoId: 'z6vLw3psEv4'
+      },
+      {
+        id: '03',
+        title: 'Кенесары Қасымұлы қозғалысы',
+        desc: 'Қозғалыстың мақсаты, барысы және тарихи маңызы',
+        videoId: '0lIiDwFEYso'
+      }
+    ].map(v => (
+      <article className="video" key={v.id}>
+        <div className="video-player">
+          <iframe
+            src={`https://www.youtube.com/embed/${v.videoId}`}
+            title={v.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
-        <p className="note">Бұл бастапқы сілтемелер — іздеу нәтижелері, дайын видео embed емес. Нақты видеоны таңдаған соң URL-ді ауыстырыңыз.</p>
-      </section>
+
+        <div className="video-info">
+          <span className="video-number">{v.id}</span>
+          <h3>{v.title}</h3>
+          <p>{v.desc}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
 
       <section className="section darksec" id="game">
         <SectionTitle eyebrow="06 / БІЛІМДІ ТЕКСЕРУ" title="Тарихи сынақ" desc="Бес тапсырманы орында. Әр жауаптан кейін дұрыс жауабын, түсіндірмесін және ұпайыңды көресің." />
